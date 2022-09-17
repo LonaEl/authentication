@@ -1,13 +1,13 @@
-require("dotenv").config();
-const express = require("express");
+import dotenv from 'dotenv';
+import mongoose from 'mongoose'
+import express from "express";
 const app = express();
-const cors = require("cors");
-const connection = require("./db");
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
+import cors from "cors";
 
-// database connection
-connection();
+dotenv.config();
+
+import userRoutes from "./routes/users.js";
+import authRoutes from "./routes/auth.js";
 
 // middlewares
 app.use(express.json());
@@ -17,5 +17,10 @@ app.use(cors());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
-const port = process.env.PORT || 8080;
-app.listen(port, console.log(`Listening on port ${port}...`));
+const CONNECTION_URL = (process.env.DB);
+const PORT = process.env.PORT|| 8080;
+
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => app.listen(PORT, () => console.log(`Server is active on port: http://localhost:${PORT}`)))
+  .catch((error) => console.log(`${error} did not connect`));
+
