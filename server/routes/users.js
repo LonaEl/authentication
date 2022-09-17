@@ -1,9 +1,9 @@
 import express from 'express';
 import { User, validate } from "../models/user.js";
 import bcrypt from "bcrypt";
-import Token from "../models/token";
+import Token from "../models/token.js";
 import crypto from "crypto";
-import  sendEmail from "../utils/sendEmail";
+import sendEmail from "../utils/sendEmail.js";
 
 
 const router = express.Router();

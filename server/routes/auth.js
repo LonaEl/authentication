@@ -2,9 +2,9 @@ import express from 'express'
 import { User } from "../models/user.js";
 import  bcrypt from "bcrypt";
 import Joi from "joi";
-import Token from "../models/token";
+import Token from "../models/token.js";
 import crypto from "crypto";
-import sendEmail from "../utils/sendEmail";
+import sendEmail from "../utils/sendEmail.js";
 
 const router = express.Router();
 
