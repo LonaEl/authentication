@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
 			.send({ message: "An Email sent to your account please verify" });
 	} catch (error) {
 		console.log(error);
-		res.status(500).send({ message: "Internal Server Error" });
+		
 	}
 });
 
@@ -57,7 +57,7 @@ router.get("/:id/verify/:token/", async (req, res) => {
 
 		res.status(200).send({ message: "Email verified successfully" });
 	} catch (error) {
-		res.status(500).send({ message: "Internal Server Error" });
+		console.log(error)
 	}
 });
 
